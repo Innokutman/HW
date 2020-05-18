@@ -8,9 +8,10 @@ public class MainClass
         changeArray();
         fillDiagonal();
         findMax();
-        //ckeckBalance();
+        checkBalance();
+        //offset(1);
     }
-    // Задание 1
+// Задание 1
     public static void invertArray() {
         int[] arr = { 1, 0, 1, 0, 0, 1 };
         for (int i = 0; i < arr.length; i++) {
@@ -22,7 +23,7 @@ public class MainClass
             }
         }
     }
-    // Задание 2
+// Задание 2
     public static void fillArray() {
         int[] array = new int[8];
         array[0] = 0;
@@ -46,7 +47,7 @@ public class MainClass
         }
 
     }
-    // Задание 4
+// Задание 4
     public static void fillDiagonal() {
 
         int[][] arr = new int[3][3];
@@ -63,7 +64,7 @@ public class MainClass
             System.out.println();
         }
     }
-    // Задание 5
+// Задание 5
     public static void findMax() {
         int[] arr = { 1, 5, 3, 2, 11, 4, 5, 2, 4, 8, 9, 1 };
         int max = arr[0];
@@ -75,26 +76,29 @@ public class MainClass
                 min = arr[i];
 
         }
-        System.out.println(max);
-        System.out.println(min);
+        System.out.println("Максимальный элемент массива: " + max);
+        System.out.println("Минимальный элемент массива: " + min);
     }
-//    // Задание 6
-//    public static void checkBalance() {
-//        int[] arr = { 1, 2, 3, 3, 2, 1 };
-//        int arrTotal += arr[i];
-//        int sumRight = 0;
-//        int sumLeft=0;
-//        for (int i=1; i < arr.length-1; i++){
-//            sumLeft += arr[i-1];
-//            sumRight = arrTotal - arr[i] - sumLeft;
-//            if (sumRight == sumLeft){
-//                System.out.println("\nFound = "+arr[i]);
-//                break;
-//
-//
-//            }
-//        }
-//    }
+// Задание 6 Здесь немного сжульничал всё же, так как отыскал в интернете способ просуммировать массив без цикла,
+// иначе только двумя выходило
+    public static void checkBalance() {
+        int[] arr = { 1, 2, 3, 3, 2, 1 };
+        int sum = Arrays.stream(arr).sum();
+        int sumRight = 0;
+        int sumLeft=0;
+        for (int i = 1; i < arr.length - 1; i++){
+            sumLeft += arr[i - 1];
+            sumRight = sum - sumLeft;
+            if (sumRight == sumLeft){
+                System.out.println("Сумма по левой части ( " + sumLeft + " )" + " равна сумме по правой части ( " + sumRight + " )");
+
+
+
+            }
+        }
+    }
+
+
 }
 
 
